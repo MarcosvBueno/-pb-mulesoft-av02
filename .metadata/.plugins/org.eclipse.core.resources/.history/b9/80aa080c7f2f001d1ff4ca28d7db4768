@@ -1,0 +1,59 @@
+package Util;
+
+import java.util.Scanner;
+
+public class EntradaMenu {
+	Scanner sc = new Scanner(System.in);
+
+	public int lerMenu() {
+		int numero = sc.nextInt();
+		do {
+		try {
+			if (numero > 2) {
+				System.out.println("Por favor, digite um numero valido do nosso menu {0 - 2 }");
+				return -1;
+			}
+			return numero;
+		} catch (Exception e) {
+			System.out.println(" Digite apenas o número da opção do menu que deseja.");
+			return -1;
+		}
+
+	}while (numero >= 0 && numero <=2);
+		
+	}
+
+	public String lerNome() {
+		String nome;
+		try {
+			nome = sc.nextLine();
+			if (nome == "") {
+				nome = "Erro, nome não preenchido";
+			}
+
+		} catch (Exception e) {
+			return "Erro (" + e + "), por favor contate o desenvolvedor do quiz";
+		}
+		return nome;
+	}
+
+	public String lerResposta() {
+		String resp;
+		resp = sc.next();
+		do {
+			try {
+				if ("verdadeiro".equals(resp) || "falso".equals(resp)) {
+					return resp;
+				} else {
+					resp = "Erro";
+				}
+			} catch (Exception e) {
+				System.out.println("Erro , tente colocar respostas válidas {verdadeiro} ou {falso}");
+			}
+
+		} while ("Erro".equals(resp));
+		return resp;
+	}
+	
+	
+}

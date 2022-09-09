@@ -1,0 +1,21 @@
+package dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import Modelo.Resultado;
+
+public class ResultadoDAO {
+	private EntityManager em;
+
+	public ResultadoDAO() {
+		
+	}
+	
+	public List<Resultado>  listarResultado(){
+	    String jpql = "Select r from Resultado r order by r.acertos desc";
+        return em.createQuery(jpql, Resultado.class)
+                .getResultList();
+	}
+}

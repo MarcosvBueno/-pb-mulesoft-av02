@@ -1,0 +1,23 @@
+package Controller;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import Modelo.Questao;
+import Util.JPAUtil;
+
+public class QuestaoController {
+
+	private EntityManager em = JPAUtil.getEntityManager();
+	
+	public List<Questao> ListarQuestoesAtivas(EntityManager em) {
+		 String jpql = "Select q from Questao q where q.ativa = :ativa";
+        return em.createQuery(jpql, Questao.class)
+                .setParameter( "ativa", true)
+                .getResultList();
+	}
+	public void fechaGerenciador() {
+		em.close();
+	}
+}

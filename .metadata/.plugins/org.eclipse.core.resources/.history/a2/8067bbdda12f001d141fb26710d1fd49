@@ -1,0 +1,26 @@
+package Controller;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import Modelo.Resultado;
+import Util.JPAUtil;
+
+public class ResultadoController {
+
+	private EntityManager em = JPAUtil.getEntityManager();
+	
+	public void CadastraNoBancoDeDados(EntityManager em, Resultado resultado) {
+		em.getTransaction().begin();
+		em.persist(resultado);
+		em.getTransaction().commit();
+		em.close();
+	}
+	
+	public  List<Resultado>  listarResultadoPlacar(){
+	    String jpql = "Select r from Resultado r order by r.acertos desc";
+        return em.createQuery(jpql, Resultado.class)
+                .getResultList();
+	}
+}

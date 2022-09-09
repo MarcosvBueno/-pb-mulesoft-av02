@@ -1,0 +1,22 @@
+package Logica;
+
+import java.util.Scanner;
+
+public class EntradaMenu {
+	Scanner sc = new Scanner(System.in);
+
+	public int LerMenu() {
+	int numero = sc.nextInt();
+	try{
+		if(numero > 2 ) {
+			System.out.println("Por favor, digite um numero valido do nosso menu {0 - 2 }");
+		return  -1;
+	}
+		return numero;
+	} catch (Exception e) {
+		System.out.println("Digite apenas o número da opção que deseja.");
+		return -1;
+	}
+		
+	}
+}

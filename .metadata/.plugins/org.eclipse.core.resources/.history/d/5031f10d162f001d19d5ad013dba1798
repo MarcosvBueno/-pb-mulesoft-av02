@@ -1,0 +1,18 @@
+package dao;
+
+import javax.persistence.EntityManager;
+
+import Modelo.Questao;
+import Util.JPAUtil;
+
+public class QuestaoDao {
+
+	EntityManager em = JPAUtil.getEntityManager();
+	
+	public List<Questao> ListarQuestoes(EntityManager entitymanager) {
+	String jpql = "Select q from Questao q where q.ativa = :ativa";
+    return entityManager.createQuery(jpql, Questao.class)
+            .setParameter("ativa", true)
+            .getResultList();
+	}
+}

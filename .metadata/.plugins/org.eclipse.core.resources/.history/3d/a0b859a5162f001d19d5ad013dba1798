@@ -1,0 +1,15 @@
+package dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import Modelo.Questao;
+import Util.JPAUtil;
+
+public class QuestaoDao {
+
+	EntityManager em = JPAUtil.getEntityManager();
+	
+
+}

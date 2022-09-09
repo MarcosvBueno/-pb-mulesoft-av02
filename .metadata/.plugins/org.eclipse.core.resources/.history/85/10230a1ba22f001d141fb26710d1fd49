@@ -1,0 +1,30 @@
+package dao;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import Controller.ResultadoController;
+import Modelo.Resultado;
+
+public class ResultadoDAO {
+	private EntityManager em;
+	
+	ResultadoController resultadoController = new ResultadoController();
+
+	public ResultadoDAO() {
+		
+	}
+	
+	public void CadastraRespostaNoBanco( Resultado resultado) {
+		return resultadoController.CadastraNoBancoDeDados(resultado);
+	}
+	
+	public List<Resultado>  resultadoPlacar(){
+		return resultadoController.listarResultadoPlacar();
+	}
+	
+	public void fechaGerenciador() {
+		em.close();
+	}
+}
